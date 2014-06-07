@@ -47,6 +47,10 @@ class Index:
         </head>
         <body>
         <h1>Welcome to Pi-QReator</h1>
+        <form action="/q" method="get">
+        <input type="text" name="data"></input>
+        <input type="submit" value="Submit"></input>
+        </form>
         </body>
         </html>'''
         return _index
@@ -79,7 +83,8 @@ class QR:
             pygame.display.update()
             return "OK"
         except Exception as e:
-            #_error = "You must pass parameter 'data'"
+            if str(e) == "'data'":
+	        return "You must pass parameter 'data'"
             return str(e)
 
 
