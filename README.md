@@ -11,11 +11,13 @@ You can send it a request with some data, it will encode the data into a QR code
 * [PyQRNative](https://code.google.com/p/pyqrnative/) - slightly modified version included
 
 **To get requirements:**  
+
     $ sudo pip install web.py
     $ sudo pip install Pillow
 
 
 **To launch the app:**  
+
     $ sudo python qrscreen.py
     
 **To use:**  
