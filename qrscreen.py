@@ -43,10 +43,10 @@ class Index:
     def GET(self):
         _index = '''<html>
         <head>
-        <title>ROI-QR</title>
+        <title>Pi-QReator</title>
         </head>
         <body>
-        <h1>Welcome to ROIQR.com!</h1>
+        <h1>Welcome to Pi-QReator</h1>
         </body>
         </html>'''
         return _index
@@ -70,14 +70,7 @@ class QR:
             lvl = 2
         try:
             data = args.data
-            print data
-            #web.header('Content-Type','image/png; charset=utf-8', unique=True)
             makeQR(args.data, 'QRfile.png', level=int(lvl), boxSize=int(pixelSize))
-            #makeQR("<3 You", 'QRfile.png', boxSize=int(pixelSize))
-            f = open('QRfile.png', 'rb')
-            imgData = f.read()
-            f.close()
-	    
             qr_img = pygame.image.load("QRfile.png") 
             x = (screen.get_width()/2) - (qr_img.get_rect().size[0]/2)
             y = (screen.get_height()/2) - (qr_img.get_rect().size[1]/2)
@@ -86,7 +79,7 @@ class QR:
             pygame.display.update()
             return "OK"
         except Exception as e:
-            _error = "You must pass parameter 'data'"
+            #_error = "You must pass parameter 'data'"
             return str(e)
 
 
