@@ -78,10 +78,10 @@ class QR:
             imgData = f.read()
             f.close()
 	    
-            qr_img = pygame.image.load("QRfile.png")
-            
+            qr_img = pygame.image.load("QRfile.png") 
             x = (screen.get_width()/2) - (qr_img.get_rect().size[0]/2)
             y = (screen.get_height()/2) - (qr_img.get_rect().size[1]/2)
+            screen.fill((255,255,255))
             screen.blit(qr_img,(x,y))
             pygame.display.update()
             return "OK"
