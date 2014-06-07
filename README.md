@@ -7,7 +7,7 @@ You can send it a request with some data, it will encode the data into a QR code
 
 **Requirements:**  
 * [webpy](http://webpy.org/)
-* [PIL](http://pillow.readthedocs.org/en/latest/)
+* [PIL](http://pillow.readthedocs.org/en/latest/) - I chose Pillow fork
 * [PyQRNative](https://code.google.com/p/pyqrnative/) - slightly modified version included
 
 **To get requirements:**  
