@@ -1,13 +1,14 @@
 <html>
 <head>
     <title>Pi-QReator</title>
-    <script type="text/javascript" src="js/jscolor.js"></script>
+    <script type="text/javascript" src="js/jscolor/jscolor.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
 </head>
 <body>
     <h1>Welcome to Pi-QReator</h1>
     <form action="/q" method="get">
-        Data: <input type="text" name="data"></input><br />
-        Size: <select name="size">
+        Data: <input type="text" name="data" id="data"></input><br />
+        Size: <select name="size" id="size">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -15,14 +16,39 @@
           <option value="5">5</option>
           <option value="6">6</option>
         </select><br />
-        Error Correction: <select name="lvl">
+        Error Correction: <select name="lvl" id="lvl">
           <option value="1">L</option>
           <option value="2">M</option>
           <option value="3">Q</option>
           <option value="4">H</option>
         </select><br />
-	<input class="color"><br />
-        <input type="submit" value="Submit"></input>
+        <input class="color" id="color-selector"><br />
+        <input type="button" value="Submit" onclick="submitBtn();"></input>
     </form>
+    
+    <script type="text/javascript">
+        function submitBtn(){
+            rgb = hexToRgb($("#color-selector").val())
+            console.log(rgb.r + "," + rgb.g + "," + rgb.b);
+            $.get( "/q", 
+                { data: $("#data").val(), 
+                  lvl: $("#lvl").val(),
+                  size: $("#size").val(),
+                  color: rgb.r + "," + rgb.g + "," + rgb.b + ",255" 
+                }
+            );
+        }
+        
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        
+    </script>
 </body>
 </html>
