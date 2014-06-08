@@ -100,7 +100,7 @@ class Dream:
 """
 url: /q
 detail: endpoint used to create QR code and show it on the screen.
-args: data - string which will get encoded in the QR
+args: data - (required) string which will get encoded in the QR
       size - size in px of each 'box' within the QR. 4 works pretty well.
       lvl - Error correction level, acceptable values 1-4
 """
