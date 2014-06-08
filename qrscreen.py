@@ -30,7 +30,7 @@ Helper method that will try to create the smallest version QR possible
 given the input data string. 
 For more info on versions see here: http://www.qrcode.com/en/about/version.html
 """
-def makeQR(data_string,path,level=2, boxSize=4):
+def makeQR(data_string,path,level=2, boxSize=4, color=(0,0,0,255)):
     quality={1: PyQRNative.QRErrorCorrectLevel.L,
              2: PyQRNative.QRErrorCorrectLevel.M,
              3: PyQRNative.QRErrorCorrectLevel.Q,
@@ -43,10 +43,24 @@ def makeQR(data_string,path,level=2, boxSize=4):
             q.addData(data_string)
             q.make()
             im=q.makeImage()
-            im.save(path,format="png")
+            
+            #Color
+            img = im.convert("RGBA")
+
+            pixdata = img.load()
+
+             
+            # If pixel is black change to desired color. 
+            for y in xrange(img.size[1]):
+                for x in xrange(img.size[0]):
+                    if pixdata[x, y] == (0, 0, 0, 255):
+                        pixdata[x, y] = color
+
+            img.save(path,format="png")
             break
-        except TypeError:
+        except TypeError as te:
             print "failed increasing size"
+            print str(te)
             size+=1
 
 """
@@ -117,9 +131,16 @@ class QR:
             lvl = args.lvl
         except:
             lvl = 2
+
+        try:
+            color = tuple(map(int,str(args.color).split(',')))
+        except:
+            color = (0,0,0,255)
+
         try:
             data = args.data
-            makeQR(args.data, 'QRfile.png', level=int(lvl), boxSize=int(pixelSize))
+            print(color)
+            makeQR(args.data, 'QRfile.png', level=int(lvl), boxSize=int(pixelSize), color=color)
             qr_img = pygame.image.load("QRfile.png") 
             x = (screen.get_width()/2) - (qr_img.get_rect().size[0]/2)
             y = (screen.get_height()/2) - (qr_img.get_rect().size[1]/2)
@@ -132,7 +153,7 @@ class QR:
                       </head>
                       <body>
                       <script type="text/javascript">
-                        history.go(-1);
+                        //history.go(-1);
                       </script>
                       </body>
                       </html>'''
