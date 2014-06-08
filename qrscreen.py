@@ -2,16 +2,21 @@ import web
 import PyQRNative
 import pygame
 import os
+
+# List of URLs for webpy server
 urls = (
   '/q', 'QR',
   '/', 'Index',
   '/Dream', 'Dream'
 )
 
+# Variables needed to enable the TFT screen
 os.environ['SDL_VIDEODRIVER'] = 'fbcon'
 os.environ["SDL_FBDEV"] = "/dev/fb1"
 os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
 os.environ["SDL_MOUSEDRV"] = "TSLIB"
+
+# Initialize pygame
 pygame.init()
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 screen.fill((255,255,255))
