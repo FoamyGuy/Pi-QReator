@@ -20,7 +20,11 @@ pygame.display.update()
 
 
 
-
+"""
+Helper method that will try to create the smallest version QR possible
+given the input data string. 
+For more info on versions see here: http://www.qrcode.com/en/about/version.html
+"""
 def makeQR(data_string,path,level=2, boxSize=4):
     quality={1: PyQRNative.QRErrorCorrectLevel.L,
              2: PyQRNative.QRErrorCorrectLevel.M,
@@ -39,6 +43,12 @@ def makeQR(data_string,path,level=2, boxSize=4):
         except TypeError:
             print "failed increasing size"
             size+=1
+
+"""
+url: /
+detail: serve the form which will allow you to choose data
+        and parameters for creating a QR.
+"""
 class Index:
     def GET(self):
         _index = '''<html>
@@ -70,11 +80,25 @@ class Index:
         </body>
         </html>'''
         return _index
+
+"""
+url: /Dream
+detail: Currently unused.
+        Except to clear the screen, and deliver a positive message =)
+"""
 class Dream:
     def GET(self):
 	screen.fill((20,100,200))
 	pygame.display.update()
         return "DREAM BIG"
+
+"""
+url: /q
+detail: endpoint used to create QR code and show it on the screen.
+args: data - string which will get encoded in the QR
+      size - size in px of each 'box' within the QR. 4 works pretty well.
+      lvl - Error correction level, acceptable values 1-4
+"""
 class QR:
     def GET(self):
         args = web.input(name = 'web')
@@ -114,5 +138,6 @@ class QR:
 
 
 if __name__ == "__main__":
+        # Start the server
 	app = web.application(urls, globals())
 	app.run()
