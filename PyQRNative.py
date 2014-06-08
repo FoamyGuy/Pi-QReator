@@ -1,6 +1,8 @@
 import math
 from PIL import Image, ImageDraw
-
+#Edited 2013 to expose the boxSize parameter in the API by Tim Cocks
+#It existed previously but was hardcoded to 10.
+#
 #QRCode for Python
 #
 #Ported from the Javascript library by Sam Curren
