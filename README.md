@@ -21,4 +21,4 @@ You can send it a request with some data, it will encode the data into a QR code
     $ sudo python qrscreen.py
     
 **To use:**  
-Send GET request `http://[your-pi]:8080/q?data=HelloWorld`
+Open browser to `http://[your-pi]:8080/`
