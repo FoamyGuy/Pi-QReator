@@ -88,6 +88,7 @@ detail: endpoint used to create QR code and show it on the screen.
 args: data - (required) string which will get encoded in the QR
       size - size in px of each 'box' within the QR. 4 works pretty well.
       lvl - Error correction level, acceptable values 1-4
+      color - comma separated RGBA value ex. 0,0,255,255
 """
 class QR:
     def GET(self):
@@ -118,16 +119,7 @@ class QR:
             screen.fill((255,255,255))
             screen.blit(qr_img,(x,y))
             pygame.display.update()
-            return '''<html>
-                      <head>
-                      <title>Pi-QReator</title>
-                      </head>
-                      <body>
-                      <script type="text/javascript">
-                        //history.go(-1);
-                      </script>
-                      </body>
-                      </html>'''
+            return 'OK'
         except Exception as e:
             if str(e) == "'data'":
 	        return "You must pass parameter 'data'"
