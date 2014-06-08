@@ -70,36 +70,7 @@ detail: serve the form which will allow you to choose data
 """
 class Index:
     def GET(self):
-        _index = '''<html>
-        <head>
-        <title>Pi-QReator</title>
-        </head>
-        <body>
-        <h1>Welcome to Pi-QReator</h1>
-        <form action="/q" method="get">
-        Data: <input type="text" name="data"></input><br />
-        Size: <select name="size">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4" selected="selected">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select><br />
-        Error Correction: <select name="lvl">
-          <option value="1">L</option>
-          <option value="2">M</option>
-          <option value="3">Q</option>
-          <option value="4">H</option>
-        </select><br />
-
-
-        <input type="submit" value="Submit"></input>
-        </form>
-        </body>
-        </html>'''
-        return _index
-
+       raise web.seeother("/static/landing.html") 
 """
 url: /Dream
 detail: Currently unused.
