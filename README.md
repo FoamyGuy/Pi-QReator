@@ -23,4 +23,4 @@ You can send it a request with some data, it will encode the data into a QR code
 **To use:**  
 Open browser to `http://[your-pi]:8080/`
 
-![picture](http://static.projects.hackaday.com/images/8489501402175975782.jpg)
+![picture](https://dl.dropboxusercontent.com/u/5724095/images/Pi%20QReator.png)
