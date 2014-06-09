@@ -7,7 +7,8 @@ import os
 urls = (
   '/q', 'QR',
   '/', 'Index',
-  '/Dream', 'Dream'
+  '/Dream', 'Dream',
+  '/clear', 'Clear'
 )
 
 # Variables needed to enable the TFT screen
@@ -81,6 +82,17 @@ class Dream:
 	screen.fill((20,100,200))
 	pygame.display.update()
         return "DREAM BIG"
+
+"""
+url: /clear
+detail: clear the screen, reset it back to white.
+"""
+class Clear:
+    def GET(self):
+	screen.fill((255,255,255))
+	pygame.display.update()
+	return "OK"
+
 
 """
 url: /q
