@@ -44,18 +44,19 @@ def makeQR(data_string,path,level=2, boxSize=4, color=(0,0,0,255)):
             q.addData(data_string)
             q.make()
             im=q.makeImage()
-            
-            #Color
             img = im.convert("RGBA")
-
-            pixdata = img.load()
+            #Color
+            if color != (0,0,0,255):
+                print "Given color is not black"
+                
+                pixdata = img.load()
 
              
-            # If pixel is black change to desired color. 
-            for y in xrange(img.size[1]):
-                for x in xrange(img.size[0]):
-                    if pixdata[x, y] == (0, 0, 0, 255):
-                        pixdata[x, y] = color
+                # If pixel is black change to desired color. 
+                for y in xrange(img.size[1]):
+                    for x in xrange(img.size[0]):
+                        if pixdata[x, y] == (0, 0, 0, 255):
+                            pixdata[x, y] = color
 
             img.save(path,format="png")
             break

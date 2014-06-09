@@ -344,7 +344,7 @@ var jscolor = {
 		this.maxV = 1; // read-only  0-1
 
 		this.pickerOnfocus = true; // display picker on focus?
-		this.pickerMode = 'HSV'; // HSV | HVS
+		this.pickerMode = 'HVS'; // HSV | HVS
 		this.pickerPosition = 'bottom'; // left | right | top | bottom
 		this.pickerSmartPosition = true; // automatically adjust picker position when necessary
 		this.pickerButtonHeight = 20; // px
