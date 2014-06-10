@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+    <div class="wrapper">
     <h1>Welcome to Pi-QReator</h1>
     <form action="/q" method="get">
         Data: <input type="text" name="data" id="data"></input><br />
@@ -19,15 +20,17 @@
           <option value="7">7</option>
           <option value="8">8</option>
         </select>
-        Error Correction: <select name="lvl" id="lvl">
+        <div id="error-div">Error Correction: <select name="lvl" id="lvl">
           <option value="1">L</option>
           <option value="2">M</option>
           <option value="3">Q</option>
           <option value="4">H</option>
-        </select><br />
+        </select></div><br />
         Color: <input class="color" id="color-selector" value="000000"><br />
-        <input type="button" value="Make QR" onclick="submitBtn();"></input>
-        <input type="button" value="Clear" onclick="clearBtn();"></input>
+        <div id="button-div">
+          <input type="button" value="Make QR" onclick="submitBtn();"></input>
+          <input type="button" value="Clear" onclick="clearBtn();"></input>
+        </div> 
     </form>
     
     <script type="text/javascript">
